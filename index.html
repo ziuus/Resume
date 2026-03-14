@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noel Paul Tomy | CS (AI) Student & Open Source Developer</title>
+    <!-- Premium Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --bg: #050505;
+            --sidebar-bg: #0a0a0c;
+            --accent: #3b82f6;
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --font-hdr: 'Space Grotesk', sans-serif;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: white; color: black; font-size: 11px; }
+            .container { padding: 0.8cm !important; gap: 0.8cm !important; width: 100% !important; max-width: none !important; }
+            .sidebar { background: #f8fafc !important; border-right: 1px solid #e2e8f0 !important; }
+            .glow, .cursor-glow, .bg-glow { display: none !important; }
+            .project-card { border: 1px solid #e2e8f0 !important; background: none !important; break-inside: avoid; }
+            .skill-tag { border: 1px solid #cbd5e1 !important; color: #475569 !important; background: none !important; }
+            .section-title { color: black !important; }
+            h1 { color: black !important; -webkit-text-fill-color: black !important; text-shadow: none !important; }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text-main); font-family: var(--font-main); line-height: 1.4; font-size: 13px; min-height: 100vh; overflow-x: hidden; }
+
+        .container { 
+            max-width: 1000px; margin: 0 auto; min-height: 100vh;
+            display: grid; grid-template-columns: 280px 1fr; 
+        }
+
+        /* Sidebar Overlay */
+        .sidebar { 
+            background: var(--sidebar-bg); padding: 2.5rem 1.5rem; 
+            border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.5rem;
+        }
+
+        .profile h1 { 
+            font-family: var(--font-hdr); font-size: 2.2rem; letter-spacing: -2px; line-height: 1; margin-bottom: 0.5rem;
+            background: linear-gradient(to bottom right, #fff, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .profile .sub { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 1.5rem; }
+
+        .links { display: flex; flex-direction: column; gap: 0.5rem; }
+        .links a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
+        .links a:hover { color: var(--accent); }
+
+        /* Main Content */
+        .main-content { padding: 2.5rem; position: relative; }
+
+        section { margin-bottom: 2rem; position: relative; z-index: 10; }
+        .section-title { 
+            font-family: var(--font-hdr); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); 
+            margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; 
+        }
+        .section-title::after { content: ''; height: 1px; flex-grow: 1; background: var(--border); }
+
+        /* Compact Items */
+        .edu-item { margin-bottom: 1rem; }
+        .edu-item h3 { font-size: 1rem; font-weight: 600; }
+        .edu-item p { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
+
+        .skill-group { margin-bottom: 1rem; }
+        .skill-group h4 { font-size: 0.8rem; margin-bottom: 6px; color: var(--text-main); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-tag { font-size: 0.75rem; padding: 4px 10px; background: var(--glass); border: 1px solid var(--border); border-radius: 6px; color: var(--text-dim); }
+
+        /* Projects - High Impact */
+        .project-card { 
+            padding: 1.5rem; background: var(--glass); border: 1px solid var(--border); border-radius: 12px; 
+            margin-bottom: 1.2rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.05); transform: translateY(-4px); }
+        .p-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .p-name { font-family: var(--font-hdr); font-size: 1.3rem; font-weight: 600; }
+        .p-tech { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .p-desc { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; }
+
+        .list { list-style: none; font-size: 0.85rem; color: var(--text-dim); }
+        .list li { margin-bottom: 6px; padding-left: 15px; position: relative; }
+        .list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; }
+
+        /* FX */
+        .bg-glow { 
+            position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+            top: 20%; right: -100px; pointer-events: none; z-index: 1;
+        }
+        .cursor-glow { 
+            width: 300px; height: 300px; background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%); 
+            position: fixed; pointer-events: none; border-radius: 50%; z-index: 99; transform: translate(-50%, -50%); 
+        }
+
+        @media (max-width: 800px) { 
+            .container { grid-template-columns: 1fr; } 
+            .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow" id="cursor-glow"></div>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <h1>Noel Paul Tomy</h1>
+                <p class="sub">CS student at MITS | Software Developer</p>
+                <div class="links">
+                    <a href="mailto:noelyt101@gmail.com">✉ noelyt101@gmail.com</a>
+                    <a href="https://github.com/ziuus" target="_blank">❂ github.com/ziuus</a>
+                    <a href="https://linkedin.com/in/noel-paul-tomy-964309313/" target="_blank">⛓ linkedin/in/noel-paul-tomy</a>
+                </div>
+            </div>
+
+            <section>
+                <h2 class="section-title">Education</h2>
+                <div class="edu-item">
+                    <h3>B.Tech CSE (AI)</h3>
+                    <p>Muthoot Inst. of Tech & Science</p>
+                    <p>2024 — 2028 | 2nd Year</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skill-group">
+                    <h4>Programming</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript / TS</span>
+                        <span class="skill-tag">Shell Scripting</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Tools & Frameworks</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AI / Machine Learning</span>
+                        <span class="skill-tag">Linux Systems</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Web Development</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Certificates</h2>
+                <ul class="list" style="font-size: 0.75rem;">
+                    <li>AI Python Specialization (DeepLearning.AI)</li>
+                    <li>Predictive Modelling Certification</li>
+                    <li>Cambridge English (C1 Level)</li>
+                    <li>Networking & Cybersec (Udemy)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="section-title">Open Source Contributions</h2>
+                <ul class="list" style="font-size: 0.75rem;">
+                    <li><strong>Brave Browser</strong>: Performance and bug fixes (C++)</li>
+                    <li><strong>GNOME</strong>: Desktop extensions (GJS)</li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="main-content">
+            <div class="bg-glow"></div>
+            <section>
+                <p style="font-size: 1.1rem; font-weight: 300; line-height: 1.6; color: var(--text-dim);">
+                    Passionate student developer focusing on <span style="color: var(--text-main); font-weight: 500;">AI systems</span> and high-performance software. Experienced in building practical AI solutions and contributing to large-scale open-source projects.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="section-title">Key Projects</h2>
+                
+                <div class="project-card">
+                    <div class="p-header">
+                        <h3 class="p-name">SynapseJS</h3>
+                        <span class="p-tech">TS / AI Layer</span>
+                    </div>
+                    <p class="p-desc">A specialized layer for web applications that allows AI models to perform complex tasks and communicate with external tools directly in the browser.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="p-header">
+                        <h3 class="p-name">Zervox</h3>
+                        <span class="p-tech">Python / Automation</span>
+                    </div>
+                    <p class="p-desc">An automated system designed to monitor server infrastructure. It uses AI to identify system errors and apply fixes without manual intervention.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="p-header">
+                        <h3 class="p-name">VoxAssist</h3>
+                        <span class="p-tech">Next.js / Voice AI</span>
+                    </div>
+                    <p class="p-desc">An AI-powered voice assistant for medical professionals. It transcribes doctor-patient conversations and automatically creates structured clinical reports.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Industry Solutions</h2>
+                <div class="project-card">
+                    <div class="p-header">
+                        <h3 class="p-name">Freelance Web Engineering</h3>
+                        <span class="p-tech">React / GSAP / SEO</span>
+                    </div>
+                    <p class="p-desc">Developed 10+ high-performance websites for commercial clients. Focused on creating modern user interfaces with smooth animations and high SEO optimization.</p>
+                </div>
+            </section>
+
+            <section style="margin-top: 3rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h2 class="section-title">Strengths</h2>
+                        <ul class="list">
+                            <li>Fast learning and adaptability</li>
+                            <li>Critical thinking and problem solving</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="section-title">Interests</h2>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Systems Engineering</span>
+                            <span class="skill-tag">Artificial Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        gsap.from(".sidebar", { x: -50, opacity: 0, duration: 1, ease: "power3.out" });
+        gsap.from(".main-content > section", { y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" });
+
+        const glow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(glow, { x: e.clientX, y: e.clientY, duration: 0.5, ease: "power2.out" });
+        });
+    </script>
+</body>
+</html>
