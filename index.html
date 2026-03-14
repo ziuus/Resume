@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noel Paul Tomy | Software Developer & AI Enthusiast</title>
+    <title>Noel Paul Tomy | Systems Engineer & AI Specialist</title>
     <!-- Premium Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -40,7 +40,6 @@
             display: grid; grid-template-columns: 280px 1fr; 
         }
 
-        /* Sidebar Overlay */
         .sidebar { 
             background: var(--sidebar-bg); padding: 2.5rem 1.5rem; 
             border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.5rem;
@@ -56,7 +55,6 @@
         .links a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
         .links a:hover { color: var(--accent); }
 
-        /* Main Content */
         .main-content { padding: 2.5rem; position: relative; }
 
         section { margin-bottom: 2rem; position: relative; z-index: 10; }
@@ -66,32 +64,29 @@
         }
         .section-title::after { content: ''; height: 1px; flex-grow: 1; background: var(--border); }
 
-        /* Compact Items */
         .edu-item { margin-bottom: 1rem; }
-        .edu-item h3 { font-size: 1rem; font-weight: 600; }
-        .edu-item p { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
+        .edu-item h3 { font-size: 1.1rem; font-weight: 600; }
+        .edu-item p { font-size: 0.85rem; color: var(--text-dim); margin-top: 2px; }
 
         .skill-group { margin-bottom: 1rem; }
         .skill-group h4 { font-size: 0.8rem; margin-bottom: 6px; color: var(--text-main); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
         .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
         .skill-tag { font-size: 0.75rem; padding: 4px 10px; background: var(--glass); border: 1px solid var(--border); border-radius: 6px; color: var(--text-dim); }
 
-        /* Projects - High Impact */
         .project-card { 
             padding: 1.5rem; background: var(--glass); border: 1px solid var(--border); border-radius: 12px; 
             margin-bottom: 1.2rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .project-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.05); transform: translateY(-4px); }
         .p-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-        .p-name { font-family: var(--font-hdr); font-size: 1.3rem; font-weight: 600; }
-        .p-tech { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
-        .p-desc { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; }
+        .p-name { font-family: var(--font-hdr); font-size: 1.4rem; font-weight: 600; }
+        .p-tech { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); }
+        .p-desc { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; }
 
-        .list { list-style: none; font-size: 0.85rem; color: var(--text-dim); }
+        .list { list-style: none; font-size: 0.9rem; color: var(--text-dim); }
         .list li { margin-bottom: 6px; padding-left: 15px; position: relative; }
         .list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; }
 
-        /* FX */
         .bg-glow { 
             position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
             top: 20%; right: -100px; pointer-events: none; z-index: 1;
@@ -113,11 +108,11 @@
         <aside class="sidebar">
             <div class="profile">
                 <h1>Noel Paul Tomy</h1>
-                <p class="sub">CS Student @ MITS | Software Developer</p>
+                <p class="sub">CS Engineer | Open Source Specialist</p>
                 <div class="links">
                     <a href="mailto:noelyt101@gmail.com">✉ noelyt101@gmail.com</a>
                     <a href="https://github.com/ziuus" target="_blank">❂ github.com/ziuus</a>
-                    <a href="https://linkedin.com/in/noel-paul-tomy-964309313/" target="_blank">⛓ LinkedIn Profile</a>
+                    <a href="https://linkedin.com/in/noel-paul-tomy-964309313/" target="_blank">⛓ LinkedIn</a>
                 </div>
             </div>
 
@@ -131,42 +126,43 @@
             </section>
 
             <section>
-                <h2 class="section-title">Technical Expertise</h2>
+                <h2 class="section-title">Technical Skills</h2>
                 <div class="skill-group">
-                    <h4>Languages</h4>
+                    <h4>Development</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python (Data/ML)</span>
+                        <span class="skill-tag">Python (Advanced)</span>
                         <span class="skill-tag">TypeScript</span>
                         <span class="skill-tag">C++</span>
-                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Linux Kernels</span>
                     </div>
                 </div>
                 <div class="skill-group">
-                    <h4>Specialization</h4>
+                    <h4>Architecture</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">LLM Orchestration</span>
                         <span class="skill-tag">AI Reasoning</span>
-                        <span class="skill-tag">Systems Automation</span>
-                        <span class="skill-tag">Full-Stack Dev</span>
+                        <span class="skill-tag">Systems Infra</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">RAG / Agentic AI</span>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2 class="section-title">Certifications</h2>
-                <ul class="list" style="font-size: 0.75rem;">
-                    <li>AI Python (DeepLearning.AI)</li>
-                    <li>Predictive Modelling & Data Science</li>
-                    <li>Cambridge English (C1 Proficiency)</li>
-                    <li>Networking & Cybersec Essentials</li>
+                <h2 class="section-title">Verified Certs</h2>
+                <ul class="list" style="font-size: 0.8rem;">
+                    <li>AI Python Specialization (DeepLearning.AI)</li>
+                    <li>Predictive Modelling & ML</li>
+                    <li>Cambridge English (C1 Level)</li>
+                    <li>Networking & Cybersec (Udemy)</li>
+                    <li>AI Workshop (be10x certified)</li>
                 </ul>
             </section>
 
             <section>
-                <h2 class="section-title">Open Source</h2>
-                <ul class="list" style="font-size: 0.75rem;">
-                    <li><strong>Brave Browser</strong>: Performance fixes in C++ core.</li>
-                    <li><strong>GNOME</strong>: Developed desktop extensions using GJS.</li>
+                <h2 class="section-title">Open Source Impact</h2>
+                <ul class="list" style="font-size: 0.8rem;">
+                    <li><strong>Brave Core</strong>: C++ performance patches</li>
+                    <li><strong>GNOME</strong>: Shell extensions & GJS development</li>
                 </ul>
             </section>
         </aside>
@@ -174,66 +170,66 @@
         <main class="main-content">
             <div class="bg-glow"></div>
             <section>
-                <p style="font-size: 1.1rem; font-weight: 300; line-height: 1.6; color: var(--text-dim);">
-                    Building <span style="color: var(--text-main); font-weight: 500;">intelligent software systems</span> that solve real-world problems. Focused on the intersection of AI reasoning and high-performance infrastructure to create efficient, autonomous solutions.
+                <p style="font-size: 1.15rem; font-weight: 300; line-height: 1.6; color: var(--text-dim);">
+                    "I build digital systems that grow businesses." Focused on the fusion of <span style="color: var(--text-main); font-weight: 500;">autonomous AI reasoning</span> and high-performance infrastructure. Bridging the gap between LLM intelligence and bare-metal reliability.
                 </p>
             </section>
 
             <section>
-                <h2 class="section-title">Featured Projects</h2>
+                <h2 class="section-title">High-Impact Engineering</h2>
                 
                 <div class="project-card">
                     <div class="p-header">
                         <h3 class="p-name">SynapseJS</h3>
-                        <span class="p-tech">TS / AI Runtime</span>
+                        <span class="p-tech">TS / AI Runtime Layer</span>
                     </div>
-                    <p class="p-desc">High-performance layer for browser-based AI models. Enables complex task reasoning and real-time tool use directly within user interfaces with minimal latency.</p>
+                    <p class="p-desc">High-performance browser runtime layer. Orchestrates multi-agent workflows and real-time tool orchestration with zero-latency synchronization, enabling LLMs to control web UIs directly.</p>
                 </div>
 
                 <div class="project-card">
                     <div class="p-header">
                         <h3 class="p-name">Zervox</h3>
-                        <span class="p-tech">Python / AI Automation</span>
+                        <span class="p-tech">Python / AI Reliability</span>
                     </div>
-                    <p class="p-desc">Automated system for production infrastructure. Uses AI reasoning to detect system faults, diagnose root causes, and apply patches without manual intervention.</p>
+                    <p class="p-desc">Autonomous "Auto-Fix" system for production infrastructure. Leverages recursive LLM reasoning for fault diagnosis and automated patch deployment in mission-critical environments.</p>
                 </div>
 
                 <div class="project-card">
                     <div class="p-header">
                         <h3 class="p-name">VoxAssist</h3>
-                        <span class="p-tech">Next.js / Medical AI</span>
+                        <span class="p-tech">Next.js / Clinical AI</span>
                     </div>
-                    <p class="p-desc">AI-powered medical assistant for clinical documentation. Transcribes doctor-patient audio into structured medical reports, streamlining healthcare workflows.</p>
+                    <p class="p-desc">Medical transcription agent for clinicians. Transforms ambient dialogue into structured reports via advanced RAG pipelines, improving documentation accuracy in healthcare.</p>
                 </div>
             </section>
 
             <section>
-                <h2 class="section-title">Industry Solutions</h2>
-                <div class="project-card">
+                <h2 class="section-title">Industry Delivery</h2>
+                <div class="project-card" style="padding: 1.2rem;">
                     <div class="p-header">
                         <h3 class="p-name">Freelance Engineering</h3>
-                        <span class="p-tech">React / Performance / SEO</span>
+                        <span class="p-tech">React / GSAP / SEO</span>
                     </div>
-                    <p class="p-desc">Delivered 10+ high-traffic commercial platforms. Implemented premium UI/UX designs with smooth animations, ensuring 95+ performance scores and optimized SEO.</p>
+                    <p class="p-desc">Shipped 10+ premium commercial platforms. Implemented bespoke interaction engines and spatial UI logic, maintaining consistent 98+ Lighthouse performance scores.</p>
                 </div>
             </section>
 
-            <section style="margin-top: 3rem;">
+            <section style="margin-top: 2rem;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                     <div>
                         <h2 class="section-title">Core Strengths</h2>
                         <ul class="list">
-                            <li>Fast technical adaptation</li>
-                            <li>Analytical reasoning & logic</li>
-                            <li>Systematic debugging</li>
+                            <li>Rapid Prototyping & Reasoning</li>
+                            <li>Critical Systems Debugging</li>
+                            <li>Business-Growth Perspective</li>
                         </ul>
                     </div>
                     <div>
-                        <h2 class="section-title">Interests</h2>
+                        <h2 class="section-title">Expert Focus</h2>
                         <div class="skill-tags">
+                            <span class="skill-tag">AI Safety & Logic</span>
+                            <span class="skill-tag">Autonomous Systems</span>
                             <span class="skill-tag">Systems Logic</span>
-                            <span class="skill-tag">AI Safety & Ethics</span>
-                            <span class="skill-tag">Emerging Tech</span>
                         </div>
                     </div>
                 </div>
